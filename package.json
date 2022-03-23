@@ -1,0 +1,14 @@
+{
+  "name": "primeiroprojeto",
+  "version": "1.0.0",
+  "description": "primeiro projeto com Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Gabrieli Martins",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.5.2"
+  }
+}
