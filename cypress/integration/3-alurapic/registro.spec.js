@@ -29,4 +29,12 @@ describe('Login e registro de usuarios', () => {
     cy.contains('button', 'Register').click(); //para validar que saiu do campo e de fato ver o que esta acontecendo
     cy.contains('ap-vmessage', 'Mininum length is 8').should('be.visible');
   })
+
+  it('Verifica mensagens de username com letra maiuscula', () => {
+    cy.contains('a', 'Register now').click();
+    cy.contains('button', 'Register').click();
+    cy.get('input[formcontrolname="userName"]').type('Gabi');
+    cy.contains('button', 'Register').click(); //para validar que saiu do campo e de fato ver o que esta acontecendo
+    cy.contains('ap-vmessage', 'Must be lower case').should('be.visible');
+  })
 })
