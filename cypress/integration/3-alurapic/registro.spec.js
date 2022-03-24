@@ -37,4 +37,20 @@ describe('Login e registro de usuarios', () => {
     cy.contains('button', 'Register').click(); //para validar que saiu do campo e de fato ver o que esta acontecendo
     cy.contains('ap-vmessage', 'Must be lower case').should('be.visible');
   })
+
+  it('Fazer login com usuario valido', () => {
+    cy.get('input[formcontrolname="userName"]').type('flavio');
+    cy.get('input[formcontrolname="password"]').type('123');
+    cy.get('button[type="submit"]').click();
+    cy.contains('a', '(Logout)').should('be.visible');
+  })
+
+  it('Fazer login com usuario invalido', () => {
+    cy.get('input[formcontrolname="userName"]').type('gabi');
+    cy.get('input[formcontrolname="password"]').type('1234');
+    cy.get('button[type="submit"]').click();
+    cy.on('windows:alert', (str) => {
+      expect(str).to.equal('Invalid user name or password')
+    })
+  })
 })
